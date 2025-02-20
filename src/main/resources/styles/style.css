@@ -1,0 +1,1568 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.gradbg{
+    max-width: 100%;
+    height: 1130px;
+    border-bottom-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    background: linear-gradient(90.00deg, rgb(232, 214, 247),rgba(255, 240, 209, 0.6) 72.396%);
+
+}
+
+nav{
+    display: flex;
+    max-width: 1130px;
+    margin: auto;
+    padding: 1rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.logo{
+    max-width: 250px ;
+}
+
+.nav_links{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+}
+
+.link a{
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #000000;
+}
+
+.link a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #de3c3c;
+    transition: all ease 300ms;
+}
+
+.link a:hover::after{
+    width: 100%;
+}
+
+#desktop_nav li:hover a{
+    color: #8a8a8a;
+}
+
+.sign_in_btn{
+    padding: 1rem 1.3rem ;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 18px;
+    background-color: #EECBFF;
+    cursor: pointer;
+    transition: all ease 300ms;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+
+}
+.sign_in_btn:hover {
+    transform: perspective(1px) scale3d(1.05, 1.05, 1) translateZ(0) !important;
+}
+
+.sign_up_btn{
+    padding: 1rem 1.3rem ;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 18px;
+    background-color: #edeeff;
+    cursor: pointer;
+    transition: all ease 300ms;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.sign_up_btn:hover {
+    transform: perspective(1px) scale3d(1.05, 1.05, 1) translateZ(0) !important;
+}
+
+.buttonss{
+    gap: 20px;
+    display: flex;
+}
+
+.unlock{
+    margin: 90px auto auto auto;
+    max-width: 1200px;
+    text-align: center;
+    font-size: 6rem;
+    font-weight: 900;;
+}
+
+.typing{
+    margin: -25px auto auto auto;
+    max-width: 1200px;
+    text-align: center;
+    font-size: 6rem;
+    font-weight: 900;
+}
+.slogan_container span{
+    color: #de3c3c;
+}
+
+.get_started{
+    display: flex;
+    justify-content: center;
+    font-family: Montserrat;
+    font-weight: 700;
+    margin: 3rem auto;
+    padding: 1.3rem 1.7rem;
+    font-size: 1.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all ease 300ms;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 15px;
+    background: rgb(255, 255, 255);
+}
+
+.get_started:hover{
+    transform: perspective(0px) scale3d(1.03, 1.03, 70) translateZ(0) !important;
+}
+
+.pepegaImg{
+    border-radius: 100px;
+}
+
+.pepegaImg img{
+    max-width: 1130px;
+    width: 1130px;
+    height: 720px;
+    margin:auto;
+    display: flex;
+    border-radius: 80px;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+.block_1{
+    max-width: 1130px;
+    display: flex;
+    margin: 240px auto auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product{
+    margin-bottom: 50px;
+}
+
+.product h1{
+    font-weight: 900;
+    font-size: 56px;
+    display: flex;
+    justify-content: center;
+}
+
+.product p{
+    display:flex;
+    font-size: 17px;
+    color: #8a8a8a;
+    margin-top: 0.5rem;
+}
+
+.block_1 img{
+    justify-content: right;
+    align-items: center;
+    display: flex;
+    margin-right: 0px;
+}
+
+.block_2_bg{
+    padding: 100px 0;
+    background-color: #f5f5f5;
+    margin: 80px auto auto;
+}
+
+.block_2{
+    max-width: 1130px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subss{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.subscrip{
+    margin-bottom: 50px;
+}
+.subscrip h1{
+    font-size: 56px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+}
+.subscrip p{
+    display: flex;
+    font-size: 17px;
+    color: #8a8a8a;
+    margin-top: 0.5rem
+}
+
+.block_3{
+    max-width: 1130px;
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.block_3 h1{
+    font-size: 56px;
+    font-weight: 900;
+}
+.block_3 p{
+    font-weight:500;
+    font-size: 17px;
+    margin-top: 30px;
+    color: #8a8a8a;
+}
+.block_3 h1, p{
+    text-align: center;
+}
+.about_uss{
+    margin-top: 100px;
+}
+
+.about_uss p{
+    margin-bottom: 20px;
+}
+ .block_3{
+     padding: 0 50px;
+ }
+
+.foot_bg{
+    margin-top: 80px;
+    background-color: #23272A;
+    height: 300px;
+    width: 100%;
+}
+
+footer{
+    max-width: 1130px;
+    margin: auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 400px repeat(3, 1fr);
+    gap: 9.5rem;
+}
+
+.containerrr{
+    max-width: 1130px;
+}
+
+footer .logo_foot{
+    margin-top: 22px;
+    max-width: 100px;
+}
+
+.column h4{
+    margin-top: 22px;
+}
+
+footer .column h4{
+    margin-bottom: 1.5rem;
+    font-size: 16px;
+    font-weight: 600;
+    color: #475ED0;
+}
+
+footer .column a{
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+}
+
+@media screen and (max-width: 1150px) {
+
+    .gradbg {
+        height: 1050px;
+    }
+
+    .pepegaImg img {
+        max-width: 1000px;
+        width: 1000px;
+        height: 646px;
+    }
+
+    .block_1, .block_2, .block_3 {
+        max-width: 1000px;
+    }
+
+    .product {
+        margin-top: 10px;
+    }
+
+    .block_1 h1 {
+        font-size: 48px;
+    }
+
+    .block_1 p {
+        font-size: 16px;
+    }
+
+    .block_2 h1 {
+        font-size: 48px;
+    }
+
+    .block_2 p {
+        font-size: 16px;
+    }
+
+    .block_3 h1 {
+        font-size: 48px;
+    }
+
+    .block_3 p {
+        font-size: 16px;
+    }
+}
+
+    footer{
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 220px repeat(3, 1fr);
+        gap: 9rem;
+    }
+
+.containerrr{
+    max-width: 1000px;
+}
+
+@media screen and (max-width: 1025px) {
+
+    .gradbg {
+        height: 980px;
+    }
+
+    .pepegaImg img {
+        max-width: 870px;
+        width: 870px;
+        height: 562px;
+    }
+
+    .block_1{
+        margin-top: 220px;
+    }
+    .block_1, .block_2, .block_3 {
+        max-width: 870px;
+    }
+
+    .product {
+        margin-top: 10px;
+    }
+
+    .block_1 h1 {
+        font-size: 42px;
+    }
+
+    .block_1 p {
+        font-size: 14px;
+    }
+
+    .statss img{
+        width: 450px;
+        display: flex;
+        margin: auto;
+    }
+
+    .block_2 h1 {
+        font-size: 42px;
+    }
+
+    .block_2 p {
+        font-size: 14px;
+    }
+
+
+    .subss img{
+        height: 330px;
+        display: flex;
+        align-items: center;
+        gap: -30px;
+    }
+
+    .block_3 h1 {
+        font-size: 42px;
+    }
+
+    .block_3 p {
+        font-size: 14px;
+    }
+
+    footer {
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 220px repeat(3, 1fr);
+        gap: 9rem;
+    }
+
+    .logo_foot{
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 925px){
+
+    .gradbg{
+        height:940px;
+    }
+    .pepegaImg img{
+        max-width: 800px;
+        width: 800px;
+        height: 517px;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 800px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1 h1{
+        font-size: 38px;
+    }
+
+    .block_1 p{
+        font-size: 13px;
+    }
+
+    .statss img{
+        width: 400px;
+    }
+
+    .block_2 h1{
+        font-size: 38px;
+    }
+
+    .block_2 p{
+        font-size: 13px;
+    }
+
+    .block_3{
+        margin-top: -20px;
+    }
+
+    .block_3 h1{
+        font-size: 38px;
+    }
+
+    .block_3 p{
+        font-size: 13px;
+    }
+
+    footer{
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 140px repeat(3, 1fr);
+        gap: 9rem;
+    }
+}
+
+@media screen and (max-width: 890px){
+    .gradbg{
+        height:910px;
+    }
+
+    nav{
+        display: flex;
+        max-width: 880px;
+        margin: auto;
+        padding: 1rem 1rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    .logo img{
+        max-width: 180px;
+        width:180px;
+    }
+
+    .nav_links{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .sign_in_btn{
+        padding: 0.8rem 1.1rem;
+        font-size: 0.8rem;
+    }
+
+    .sign_up_btn{
+        padding: 0.8rem 1.1rem ;
+        font-size: 0.8rem;
+    }
+
+    .pepegaImg img{
+        max-width: 800px;
+        width: 740px;
+        height: 477px;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 740px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top: 170px
+    }
+
+    .block_1 h1{
+        font-size: 34px;
+    }
+
+    .block_1 p{
+        font-size: 12px;
+    }
+
+    .statss img{
+        width: 380px;
+    }
+
+    .block_2 h1{
+        font-size: 34px;
+    }
+
+    .block_2 p{
+        font-size: 12px;
+    }
+
+    .subss img{
+        height: 280px;
+        display: flex;
+        align-items: center;
+        gap: -30px;
+    }
+    .block_3{
+        margin-top: -20px;
+    }
+
+    .block_3 h1{
+        font-size: 34px;
+    }
+
+    .block_3 p{
+        margin-top: 20px;
+        font-size: 12px;
+    }
+
+    .foot_bg{
+        height: 250px;
+    }
+
+    footer{
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 150px repeat(3, 1fr);
+        gap: 9rem;
+    }
+
+    .logo_foot img {
+        width: 180px;
+    }
+
+    footer .column h4{
+        margin-bottom: 1rem;
+        font-size: 12px;
+    }
+
+    footer .column a{
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 760px){
+    .gradbg{
+        height:820px;
+    }
+
+    nav .nav_links{
+        display: none;
+    }
+
+    .logo img{
+        max-width: 200px;
+        width:200px;
+    }
+
+    .sign_in_btn{
+        padding: 1rem 1.3rem;
+        font-size: 0.8rem;
+    }
+
+    .sign_up_btn{
+        padding: 1rem 1.3rem;
+        font-size: 0.8rem;
+    }
+
+    .unlock, .typing{
+        font-size: 5rem;
+    }
+
+    .pepegaImg img{
+        max-width: 640px;
+        width: 640px;
+        height: 414px;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 640px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top: 150px
+    }
+
+    .block_1 h1{
+        font-size: 28px;
+    }
+
+    .block_1 p{
+        font-size: 10px;
+    }
+
+    .statss img{
+        width: 350px;
+    }
+
+    .block_2 h1{
+        font-size: 28px;
+    }
+
+    .block_2 p{
+        font-size: 10px;
+    }
+
+    .subss img{
+        height: 250px;
+    }
+
+
+    .block_3{
+        margin-top: -50px;
+    }
+
+    .block_3 h1{
+        font-size: 28px;
+    }
+
+    .block_3 p{
+        margin-top: 13px;
+        font-size: 10px;
+    }
+
+    .foot_bg{
+        height: 250px;
+    }
+
+    footer{
+        max-width: 600px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 70px repeat(6, 1fr);
+        gap: 7rem;
+    }
+
+    .containerrr{
+        max-width: 740px;
+    }
+
+    .logo_foot img {
+        width: 160px;
+    }
+
+    footer .column h4{
+        margin-bottom: 1.5rem;
+        font-size: 14px;
+    }
+
+    footer .column a{
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .gradbg{
+        height:490px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    nav .nav_links{
+        display: none;
+    }
+
+    .pepegaImg{
+        display: none;
+    }
+
+    .logo img{
+        width:200px;
+    }
+
+    .sign_in_btn{
+        padding: 1rem 1.3rem;
+        font-size: 0.8rem;
+    }
+
+    .sign_up_btn{
+        padding: 1rem 1.3rem;
+        font-size: 0.8rem;
+    }
+
+    .unlock, .typing{
+        font-size: 4rem;
+    }
+
+    .unlock {
+        margin-bottom: 5px;
+    }
+    .get_started{
+        margin: 3rem auto;
+        padding: 1.3rem 1.3rem;
+        font-size: 1.25rem;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 540px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top:50px
+    }
+
+    .block_1 h1{
+        font-size: 24px;
+    }
+
+    .block_1 p{
+        font-size: 8px;
+    }
+
+    .statss img{
+        width: 300px;
+    }
+
+    .block_2_bg{
+        margin-top: 60px;
+        padding: 60px 0;
+    }
+
+    .block_2 h1{
+        font-size: 24px;
+    }
+
+    .block_2 p{
+        font-size: 8px;
+    }
+
+    .subss img{
+        height: 220px;
+    }
+    .subss{
+        gap:10px;
+    }
+
+
+    .block_3{
+        margin-top: -50px;
+    }
+
+    .block_3 h1{
+        font-size: 24px;
+    }
+
+    .block_3 p{
+        margin-top: 10px;
+        font-size: 8px;
+    }
+
+    .foot_bg{
+        height: 250px;
+    }
+
+    footer{
+        max-width: 600px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 30px repeat(3, 1fr);
+        gap: 7rem;
+    }
+
+    .containerrr{
+        max-width: 580px;
+    }
+
+    .logo_foot img {
+        width: 120px;
+        margin-left: -10px;
+    }
+
+    footer .column h4{
+        margin-bottom: 1rem;
+        font-size: 12px;
+    }
+
+    footer .column a{
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 560px){
+    .gradbg{
+        height:470px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    nav .nav_links{
+        display: none;
+    }
+
+    .pepegaImg{
+        display: none;
+    }
+
+    .logo img{
+        max-width: 200px;
+        width:180px;
+    }
+
+    .sign_in_btn{
+        padding: 1rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .sign_up_btn{
+        padding: 1rem 1.2rem ;
+        font-size: 0.8rem;
+    }
+
+    .unlock, .typing{
+        font-size: 3.5rem;
+    }
+
+    .unlock {
+        margin-bottom: 9px;
+    }
+    .get_started{
+        margin: 3rem auto;
+        padding: 1rem 1rem;
+        font-size: 1.25rem;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 480px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top:50px
+    }
+
+    .block_1 h1{
+        font-size: 22px;
+    }
+
+    .block_1 p{
+        font-size: 8px;
+    }
+
+    .statss img{
+        width: 260px;
+    }
+
+    .block_2_bg{
+        margin-top: 50px;
+        padding: 60px 0;
+    }
+
+    .block_2 h1{
+        font-size: 22px;
+    }
+
+    .block_2 p{
+        font-size: 8px;
+    }
+
+    .subss img{
+        height: 190px;
+    }
+    .subss{
+        gap:10px;
+    }
+
+
+    .block_3{
+        margin-top: -45px;
+    }
+
+    .block_3 h1{
+        font-size: 22px;
+    }
+
+    .block_3 p{
+        margin-top: 8px;
+        font-size: 8px;
+    }
+
+    .foot_bg{
+        height: 160px;
+    }
+
+    footer{
+        max-width: 600px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 80px repeat(3, 1px);
+        gap: 7rem;
+        grid-column-gap: 24%;
+    }
+
+    .containerrr{
+        width: 480px;
+    }
+
+    .logo_foot img {
+        width: 100px;
+        margin-left: -10px;
+    }
+
+
+    footer .column h4{
+        margin-bottom: 0.5rem;
+        font-size: 8px;
+    }
+
+    footer .column a{
+        margin-bottom: 0.3rem;
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 490px){
+    .gradbg{
+        height:450px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    nav .nav_links{
+        display: none;
+    }
+
+    .pepegaImg{
+        display: none;
+    }
+
+    .logo img{
+        width:180px;
+    }
+
+    .sign_in_btn{
+        padding: 0.9rem 1.1rem;
+        font-size: 0.8rem;
+    }
+
+    .sign_up_btn{
+        padding: 0.9rem 1.1rem ;
+        font-size: 0.8rem;
+    }
+
+    .unlock, .typing{
+        font-size: 3rem;
+    }
+
+    .unlock{
+        margin-bottom: 9px;
+    }
+    .get_started{
+        margin: 3rem auto;
+        padding: 1rem 1rem;
+        font-size: 1.25rem;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 420px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top:20px
+    }
+
+    .block_1 h1{
+        font-size: 20px;
+    }
+
+    .block_1 p{
+        font-size: 7px;
+    }
+
+    .statss img{
+        width: 220px;
+    }
+
+    .block_2_bg{
+        margin-top: 20px;
+        padding: 50px 0;
+    }
+
+    .block_2 h1{
+        font-size: 20px;
+    }
+
+    .block_2 p{
+        font-size: 7px;
+    }
+
+    .subss img{
+        height: 165px;
+    }
+    .subss{
+        gap:8px;
+    }
+
+
+    .block_3{
+        margin-top: -60px;
+    }
+
+    .block_3 h1{
+        font-size: 20px;
+    }
+
+    .block_3 p{
+        margin-top: 8px;
+        font-size: 7px;
+    }
+
+    .foot_bg{
+        height: 150px;
+        margin-top: 50px;
+    }
+
+    footer{
+        max-width: 4200px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 50px repeat(3, 1px);
+        gap: 7rem;
+        grid-column-gap: 24%;
+    }
+
+    .containerrr{
+        max-width: 420px;
+        width: 420px;
+    }
+
+    .logo_foot img {
+        width: 100px;
+    }
+
+
+    footer .column h4{
+        margin-bottom: 0.5rem;
+        font-size: 8px;
+    }
+
+    footer .column a{
+        margin-bottom: 0.3rem;
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 430px){
+    .gradbg{
+        height:450px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    nav .nav_links{
+        display: none;
+    }
+
+    .pepegaImg{
+        display: none;
+    }
+
+    .logo img{
+        width:140px;
+    }
+
+    .sign_in_btn{
+        padding: 0.9rem 1rem;
+        font-size: 0.7rem;
+
+    }
+
+    .sign_up_btn{
+        padding: 0.9rem 1rem ;
+        font-size: 0.7rem;
+    }
+    .unlock, .typing{
+        font-size: 2.7rem;
+    }
+
+    .unlock{
+        margin-bottom: 13px;
+    }
+    .get_started{
+        font-weight: 700;
+        margin: 3rem auto;
+        padding: 1rem 1rem;
+        font-size: 1rem;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 380px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top:10px
+    }
+
+    .block_1 h1{
+        font-size: 18px;
+    }
+
+    .block_1 p{
+        font-size: 7px;
+        margin-top: 3px;
+    }
+
+    .statss img{
+        width: 180px;
+    }
+
+    .block_2_bg{
+        margin-top: 20px;
+        padding: 40px 0;
+    }
+
+    .block_2 h1{
+        font-size: 18px;
+    }
+
+    .block_2 p{
+        margin-top: 5px;
+        font-size: 6px;
+    }
+
+    .subss img{
+        height: 150px;
+    }
+    .subss{
+        gap:8px;
+    }
+
+
+    .block_3{
+        margin-top: -60px;
+    }
+
+    .block_3 h1{
+        font-size: 18px;
+    }
+
+    .block_3 p{
+        margin-top: 8px;
+        font-size: 6px;
+    }
+
+    .foot_bg{
+        height: 150px;
+        margin-top: 50px;
+    }
+
+    footer{
+        max-width: 4200px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 20px repeat(3, 1px);
+        gap: 4rem;
+        grid-column-gap: 26%;
+    }
+
+    .containerrr{
+        width: 380px;
+    }
+
+    .logo_foot img {
+        width: 100px;
+    }
+
+
+    footer .column h4{
+        margin-bottom: 0.5rem;
+        font-size: 8px;
+    }
+
+    footer .column a{
+        margin-bottom: 0.3rem;
+        font-size: 8px;
+    }
+}
+
+
+@media screen and (max-width: 385px){
+    .gradbg{
+        height:400px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    nav .nav_links{
+        display: none;
+    }
+
+    .pepegaImg{
+        display: none;
+    }
+
+    .logo img{
+        width:120px;
+    }
+
+    .sign_in_btn{
+        padding: 0.8rem 0.9rem;
+        font-size: 0.6rem;
+    }
+
+    .sign_up_btn{
+        padding: 0.8rem 0.9rem ;
+        font-size: 0.6rem;
+        border-radius: 18px;
+    }
+
+    .unlock, .typing{
+        font-size: 2.4rem;
+    }
+
+    .unlock{
+        margin-bottom: 13px;
+    }
+    .get_started{
+        margin: 3rem auto;
+        padding: 1rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 335px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top:10px
+    }
+
+    .block_1 h1{
+        font-size: 15px;
+        margin-top: 12px;
+    }
+
+    .block_1 p{
+        font-size: 5.5px;
+        margin-top: 3px;
+    }
+
+    .statss img{
+        width: 170px;
+    }
+
+    .block_2_bg{
+        margin-top: 20px;
+        padding: 30px 0;
+    }
+
+    .block_2 h1{
+        font-size: 15px;
+        margin-top: 12px;
+    }
+
+    .block_2 p{
+        margin-top: 5px;
+        font-size: 5.5px;
+    }
+
+    .subss img{
+        height: 130px;
+    }
+    .subss{
+        gap:8px;
+    }
+
+
+    .block_3{
+        margin-top: -70px;
+    }
+
+    .block_3 h1{
+        font-size: 15px;
+    }
+
+    .block_3 p{
+        margin-top: 8px;
+        font-size: 5.5px;
+    }
+
+    .foot_bg{
+        height: 150px;
+        margin-top: 50px;
+    }
+
+    footer{
+        max-width: 420px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 20px repeat(3, 1px);
+        gap: 7rem;
+        grid-column-gap: 20%;
+    }
+
+    .containerrr{
+        width: 420px;
+    }
+
+    .logo_foot img {
+        width: 80px;
+    }
+
+
+    footer .column h4{
+        margin-bottom: 0.5rem;
+        font-size: 8px;
+        font-weight: 600;
+    }
+
+    footer .column a{
+        margin-bottom: 0.3rem;
+        font-size: 8px;
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .gradbg{
+        height:400px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    nav .nav_links{
+        display: none;
+    }
+
+    .pepegaImg{
+        display: none;
+    }
+
+    .logo img{
+        width:110px;
+    }
+
+    .sign_in_btn{
+        padding: 0.7rem 0.8rem;
+        font-size: 0.6rem;
+    }
+
+    .sign_up_btn{
+        padding: 0.7rem 0.8rem ;
+        font-size: 0.6rem;
+        border-radius: 18px;
+    }
+
+    .unlock, .typing{
+        font-size: 2.2rem;
+    }
+
+    .unlock{
+        margin-bottom: 13px;
+    }
+    .get_started{
+        margin: 3rem auto;
+        padding: 0.8rem 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .block_1, .block_2, .block_3{
+        max-width: 305px;
+    }
+    .product{
+        margin-top: 20px;
+    }
+
+    .block_1{
+        margin-top:0px
+    }
+
+    .block_1 h1{
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    .block_1 p{
+        font-size: 5px;
+        margin-top: 3px;
+    }
+
+    .statss img{
+        width: 140px;
+    }
+
+    .block_2_bg{
+        margin-top: 0px;
+        padding: 16px 0;
+    }
+
+    .block_2 h1{
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    .block_2 p{
+        margin-top: 5px;
+        font-size: 5px;
+    }
+
+    .subss img{
+        height: 105px;
+    }
+    .subss{
+        gap:8px;
+    }
+
+
+    .block_3{
+        margin-top: -75px;
+    }
+
+    .block_3 h1{
+        font-size: 14px;
+    }
+
+    .block_3 p{
+        margin-top: 8px;
+        font-size: 4px;
+    }
+
+    .foot_bg{
+        height: 150px;
+        margin-top: 30px;
+    }
+
+    footer{
+        max-width: 420px;
+        margin: auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 0px repeat(3, 1px);
+        gap: 4rem;
+        grid-column-gap: 20%;
+    }
+
+    .containerrr{
+        width: 420px;
+    }
+
+    .logo_foot img {
+        width: 60px;
+    }
+
+
+    footer .column h4{
+        margin-bottom: 0.5rem;
+        font-size: 6px;
+        font-weight: 600;
+    }
+
+    footer .column a{
+        margin-bottom: 0.3rem;
+        font-size: 6px;
+        font-weight: 400;
+    }
+}
