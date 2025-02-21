@@ -1,13 +1,11 @@
 package org.example.typinglab.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User extends BaseEntity {
     private String username;
     private String email;
@@ -23,6 +21,12 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -31,6 +35,7 @@ public class User extends BaseEntity {
         this.username = username;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -39,26 +44,22 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password
-    ) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
+    @Column(name = "total_score")
     public double getTotalScore() {
         return totalScore;
     }
 
     public void setTotalScore(double totalScore) {
         this.totalScore = totalScore;
-    }
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    public List<Role> getRoles() {
-        return roles;
     }
 
     public void setRoles(List<Role> roles) {

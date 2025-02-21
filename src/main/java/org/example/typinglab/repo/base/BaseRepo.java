@@ -1,4 +1,4 @@
-package repo.base;
+package org.example.typinglab.repo.base;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;

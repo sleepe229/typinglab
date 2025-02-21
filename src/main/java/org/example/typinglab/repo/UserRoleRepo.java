@@ -1,4 +1,4 @@
-package repo;
+package org.example.typinglab.repo;
 
 import org.example.typinglab.entities.Role;
 import org.example.typinglab.entities.enums.UserRoles;
