@@ -5,11 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "typing_test")
 public class TypingTest extends BaseEntity{
-    @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
-    @ManyToOne
-    @JoinColumn(name = "text_id")
     private TypingText text;
     private int speed;
     private double accuracy;
@@ -27,10 +23,14 @@ public class TypingTest extends BaseEntity{
         this.score = score;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "text_id")
     public TypingText getText() {
         return text;
     }

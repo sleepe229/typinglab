@@ -1,9 +1,9 @@
 package org.example.typinglab.repo.base;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.data.repository.Repository;
 
 @NoRepositoryBean
-public interface BaseRepo<T> extends Repository<T, Long>, JpaSpecificationExecutor<T> {
+public interface BaseRepo<T> extends JpaRepository<T, Long>, JpaSpecificationExecutor<T> {
 }
