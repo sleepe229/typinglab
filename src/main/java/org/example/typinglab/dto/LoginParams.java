@@ -1,4 +1,4 @@
-package org.example.typinglab.controller;
+package org.example.typinglab.dto;
 
 public class LoginParams {
     private String login;
