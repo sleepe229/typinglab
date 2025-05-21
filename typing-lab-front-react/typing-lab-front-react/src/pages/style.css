@@ -21,6 +21,38 @@ html{
     scroll-behavior: smooth;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.logo img,
+.logo_foot img {
+  width: auto;
+  height: auto;
+}
+
+.subss img {
+  width: auto;
+  height: auto;
+  margin: 0 10px;
+}
+
+/* Статистика */
+.statss img,
+.block_3 img {
+  width: 100%;
+  min-width: 500px;
+  height: auto;
+}
+
+/* Footer icons and logo */
+footer .logo_foot img {
+  width: auto;
+  height: auto;
+}
+
 .gradbg{
     max-width: 100%;
     height: 1130px;

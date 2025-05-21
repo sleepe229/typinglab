@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../style.css";
 
 function scrollToContainer(selector, instance = 0) {
@@ -17,7 +18,7 @@ export default function Landing() {
       <nav className="desktop_nav">
         <div className="logo">
           <a href="#">
-            <img src="/assets/full%20logo.svg" alt="Logo" />
+            <img src="/assets/full%20logo.svg" alt="" />
           </a>
         </div>
         <ul className="nav_links">
@@ -32,12 +33,12 @@ export default function Landing() {
           </li>
         </ul>
         <div className="buttonss">
-          <a href="sign_in_page.html">
+          <Link to="/sign-in">
             <button id="btnsi" className="sign_in_btn">Sign in</button>
-          </a>
-          <a href="sign_up_page.html">
+          </Link>
+          <Link to="/sign-up">
             <button id="btnsu" className="sign_up_btn">Sign up</button>
-          </a>
+          </Link>
         </div>
       </nav>
 
