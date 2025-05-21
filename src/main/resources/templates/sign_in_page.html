@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/sign_in_cs.css">
+</head>
+<body>
+<div class="bg">
+    <div class="form">
+        <div class="logo">
+            <img src="assets/Group%2015.svg" alt="">
+        </div>
+        <div class="subtitle">
+            <h1>
+                Log in with username/email
+            </h1>
+        </div>
+        <div class="input-container ic1">
+            <input id="firstname" class="input" type="text" placeholder=" " />
+            <div class="cut"></div>
+            <label for="firstname" class="placeholder">Login</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="lastname" class="input" type="password" placeholder=" " />
+            <div class="cut"></div>
+            <label for="lastname" class="placeholder">Password</label>
+        </div>
+        <div class="remember_forgot">
+            <label> <input type="checkbox" class="checkboxrem">Remember me</label>
+            <a href="#">Recover password</a>
+        </div>
+        <button type="button" class="submit" onclick="signIn()">Sign in</button>
+        <div class="create_acc">
+            <a href="sign_up_page.html">Create account</a>
+        </div>
+    </div>
+</div>
+<script src="./scripts/sign_in.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/verification.css">
+</head>
+<body>
+<div class="bg">
+    <form class="form">
+        <div class="logo">
+            <img src="assets/Group%2015.svg" alt="">
+        </div>
+        <div class="subtitle">
+            <h1>
+                Enter the code from Email
+            </h1>
+        </div>
+        <div class="input-container">
+            <input type="text" maxlength="1" style="text-transform: uppercase" oninput="handleInput(1, event)"
+                   onkeydown="handleBackspace(1, event)">
+            <input type="text" maxlength="1" style="text-transform: uppercase" required oninput="handleInput(2, event)"
+                   onkeydown="handleBackspace(2, event)" disabled>
+            <input type="text" maxlength="1" style="text-transform: uppercase" required oninput="handleInput(3,
+            event)" onkeydown="handleBackspace(3,
+            event)" disabled>
+            <input type="text" maxlength="1" style="text-transform: uppercase" required oninput="handleInput(4, event)" onkeydown="handleBackspace(4,
+            event)" disabled>
+            <input type="text" maxlength="1" style="text-transform: uppercase" required oninput="handleInput(5, event)" onkeydown="handleBackspace(5,
+            event)" disabled>
+            <input type="text" maxlength="1" style="text-transform: uppercase" required oninput="handleInput(6, event)" onkeydown="handleBackspace(6,
+            event)" disabled>
+        </div>
+        <button class="submitBTN" type="submit" disabled>Create account</button>
+    </form>
+</div>
+<script src="scripts/verify.js"></script>
+</body>
+</html>
