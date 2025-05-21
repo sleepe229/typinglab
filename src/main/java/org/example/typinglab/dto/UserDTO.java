@@ -3,7 +3,7 @@ package org.example.typinglab.dto;
 import java.time.LocalDate;
 
 public class UserDTO {
-    private String id;
+    private int id;
     private String login;
     private boolean isAdmin;
     private String firstName;
@@ -13,7 +13,7 @@ public class UserDTO {
     private LocalDate birthdate;
     private String country;
 
-    public UserDTO(String id, String login, boolean isAdmin, String firstName, String lastName, String username, String email, LocalDate birthdate, String country) {
+    public UserDTO(int id, String login, boolean isAdmin, String firstName, String lastName, String username, String email, LocalDate birthdate, String country) {
         this.id = id;
         this.login = login;
         this.isAdmin = isAdmin;
@@ -25,8 +25,8 @@ public class UserDTO {
         this.country = country;
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public String getLogin() { return login; }
     public void setLogin(String login) { this.login = login; }
     public boolean isAdmin() { return isAdmin; }

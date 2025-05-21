@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UserService {
@@ -18,6 +20,10 @@ public class UserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    public Optional<User> findById(int userId) {
+        return userRepository.findById(userId);
+    }
 
     @Transactional
     public User createUser(String login, String password) {
@@ -31,7 +37,6 @@ public class UserService {
             throw new RuntimeException("Login already exists");
         }
         User user = new User();
-        user.setId(java.util.UUID.randomUUID().toString());
         user.setLogin(login);
         user.setPassword(passwordEncoder.encode(password));
         user.setAdmin(false);
@@ -58,7 +63,6 @@ public class UserService {
     public void initializeAdminUser() {
         if (userRepository.findByLogin("sysadm") == null) {
             User admin = new User();
-            admin.setId(java.util.UUID.randomUUID().toString());
             admin.setLogin("sysadm");
             admin.setPassword(passwordEncoder.encode("sysadm"));
             admin.setAdmin(true);

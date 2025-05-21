@@ -1,7 +1,7 @@
 package org.example.typinglab.dto;
 
 public class UserStatsDTO {
-    private String userId;
+    private int userId;
     private Double averageTrainingSpeed;
     private Double averageTypingSpeed;
     private Integer completedTrainings;
@@ -9,7 +9,7 @@ public class UserStatsDTO {
     private Integer totalCharactersTyped;
     private Double missclickPercentage;
 
-    public UserStatsDTO(String userId, Double averageTrainingSpeed, Double averageTypingSpeed, Integer completedTrainings,
+    public UserStatsDTO(int userId, Double averageTrainingSpeed, Double averageTypingSpeed, Integer completedTrainings,
                         Double maxTypingSpeed, Integer totalCharactersTyped, Double missclickPercentage) {
         this.userId = userId;
         this.averageTrainingSpeed = averageTrainingSpeed;
@@ -20,8 +20,8 @@ public class UserStatsDTO {
         this.missclickPercentage = missclickPercentage;
     }
 
-    public String getUserId() { return userId; }
-    public void setUserId(String userId) { this.userId = userId; }
+    public int getUserId() { return userId; }
+    public void setUserId(int userId) { this.userId = userId; }
     public Double getAverageTrainingSpeed() { return averageTrainingSpeed; }
     public void setAverageTrainingSpeed(Double averageTrainingSpeed) { this.averageTrainingSpeed = averageTrainingSpeed; }
     public Double getAverageTypingSpeed() { return averageTypingSpeed; }
