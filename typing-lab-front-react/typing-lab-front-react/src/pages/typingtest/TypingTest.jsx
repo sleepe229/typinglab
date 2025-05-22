@@ -2,87 +2,128 @@ import axios from "axios";
 import "../style.css";
 import "../typingtest.css";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function TypingTest() {
+    const navigate = useNavigate();
     const [words, setWords] = useState([]);
+    const [generatedText, setGeneratedText] = useState("");
+    const [inputText, setInputText] = useState("");
     const [timeLeft, setTimeLeft] = useState(60);
     const [isRunning, setIsRunning] = useState(false);
-    const [userInput, setUserInput] = useState("");
-    const [errors, setErrors] = useState(0);
-    const [totalTyped, setTotalTyped] = useState(0);
-
+    const [errorCount, setErrorCount] = useState(0);
+    const [typedChars, setTypedChars] = useState(0);
+    const [textOffset, setTextOffset] = useState(0);
     const intervalRef = useRef(null);
-    const inputRef = useRef(null);
+    const charWidth = 10;
 
-    const getDifficultyFromURL = () => {
-        const params = new URLSearchParams(window.location.search);
-        return params.get("difficulty") || "1";
+    const difficulty = new URLSearchParams(window.location.search).get("level") || 1;
+
+    const handleStart = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/typinglab/users/words?level=${difficulty}`);
+            console.log("Raw API response.data:", response.data);
+            let wordsArray = response.data;
+            if (typeof wordsArray === "string") {
+                wordsArray = wordsArray.split(",").map(word => String(word).trim()).filter(word => word.length > 0);
+            } else if (Array.isArray(wordsArray)) {
+                wordsArray = wordsArray.map(word => String(word).trim()).filter(word => word.length > 0);
+            } else if (typeof wordsArray === "object") {
+                wordsArray = Object.values(wordsArray)
+                    .map(word => String(word).trim().replace(/,/g, ""))
+                    .filter(word => word.length > 0);
+            }
+            console.log("Cleaned words array:", wordsArray);
+            setWords(wordsArray);
+            setGeneratedText(wordsArray.join(" "));
+            setInputText("");
+            setTimeLeft(60);
+            setIsRunning(true);
+            setErrorCount(0);
+            setTypedChars(0);
+            setTextOffset(0);
+        } catch (error) {
+            console.error("Ошибка при получении слов:", error);
+        }
     };
 
-    const startTest = async () => {
+    const handleEnd = async () => {
         setIsRunning(false);
-        setUserInput("");
-        setErrors(0);
-        setTotalTyped(0);
-        setTimeLeft(60);
-
-        try {
-            const difficulty = getDifficultyFromURL();
-            const response = await axios.get(`/api/typinglab/users/words?level=${difficulty}`);
-            console.log(response.data);
-            const joinedText = wordsArray.join(" ");
-            setWords(wordsArray);
-        } catch (error) {
-            console.error("Error fetching words:", error);
-        }
+        clearInterval(intervalRef.current);
+        await sendStats();
     };
 
     useEffect(() => {
         if (isRunning && timeLeft > 0) {
             intervalRef.current = setInterval(() => {
-                setTimeLeft((prev) => prev - 1);
+                setTimeLeft(prev => prev - 1);
             }, 1000);
-        }
-
-        if (timeLeft === 0 && isRunning) {
-            clearInterval(intervalRef.current);
+        } else if (timeLeft === 0 && isRunning) {
             setIsRunning(false);
-            sendResults();
+            clearInterval(intervalRef.current);
+            sendStats();
         }
-
         return () => clearInterval(intervalRef.current);
     }, [isRunning, timeLeft]);
 
-    const sendResults = async () => {
-        const charsTyped = userInput.length;
-        const speed = charsTyped / 60;
-        const accuracy = charsTyped === 0 ? 0 : Math.round(((charsTyped - errors) / charsTyped) * 100);
+    const sendStats = async () => {
+        const accuracy = generatedText.length === 0 ? 0 : Math.max(0, 100 - Math.round((errorCount / generatedText.length) * 100));
+        const speed = Math.round(typedChars / 60);
+        const totalMissClick = errorCount;
+        const userId = localStorage.getItem("userId");
+        const totalCharactersTyped = typedChars;
 
         try {
-            await axios.post("/api/typinglab/users/statistics", {
-                speed,
-                charactersTyped: charsTyped,
-                errorPercentage: 100 - accuracy,
+            await axios.post('http://localhost:8080/api/typinglab/users/stats/update', {
+                userId,
+                totalMissClick,
+                totalCharactersTyped
             });
-        } catch (error) {
-            console.error("Error sending results:", error);
+            console.log("Статистика отправлена");
+        } catch (err) {
+            console.error("Ошибка при отправке статистики:", err);
         }
     };
 
     const handleInputChange = (e) => {
         const value = e.target.value;
-        const originalText = words.join(" ").slice(0, value.length);
+        setInputText(value);
+        setTypedChars(value.length);
 
-        let errorCount = 0;
+        let errors = 0;
         for (let i = 0; i < value.length; i++) {
-            if (value[i] !== originalText[i]) {
-                errorCount++;
+            if (value[i] !== generatedText[i]) {
+                errors++;
             }
         }
+        setErrorCount(errors);
 
-        setUserInput(value);
-        setTotalTyped(value.length);
-        setErrors(errorCount);
+        setTextOffset(value.length * charWidth);
+    };
+
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+    };
+
+    const handleRedirect = () => {
+        window.location.href = "lk.html";
+    };
+    const renderText = () => {
+        return generatedText.split("").map((char, index) => {
+            let style = {};
+            if (index < inputText.length) {
+                style = {
+                    color: inputText[index] === char ? "green" : "red",
+                };
+            }
+            return (
+                <span key={index} style={style}>
+                    {char}
+                </span>
+            );
+        });
     };
 
     return (
@@ -92,41 +133,53 @@ function TypingTest() {
                     <a href="#"><img src="/assets/full%20logo.svg" alt="Logo" /></a>
                 </div>
                 <ul className="nav_links">
-                    <li className="link"><a href="index.html">Home</a></li>
-                    <li className="link"><a href="typing-test.html" className="active">Typing Test</a></li>
-                    <li className="link"><a href="profile.html">Profile</a></li>
+                    <li className="link"><a href="/">Home</a></li>
+                    <li className="link"><a href="typing-test.html" className="active">Tests</a></li>
+                    <li className="link"><a href="profile.html">Stats</a></li>
                 </ul>
                 <div className="buttonss">
-                    <button id="btnsi" className="sign_in_btn" onClick={() => window.location.href = "lk.html"}>My Profile</button>
+                    <button id="btnsi" className="sign_in_btn" onClick={() => navigate("/profile")}>My Profile</button>
                 </div>
             </nav>
 
             <div className="typing-test-container">
-                <div className="timer-display">
-                    Time Left: {timeLeft}s
-                </div>
-
+                <div className="timer-display">Time: {formatTime(timeLeft)}</div>
                 <h1 className="typing-test-title">Typing Test</h1>
 
-                <button className="btn-custom" onClick={startTest}>Start Test</button>
+                <button
+                    onClick={isRunning ? handleEnd : handleStart}
+                    className="btn-custom"
+                >
+                    {isRunning ? "Закончить тренировку" : "Начать тренировку"}
+                </button>
 
-                <div id="generated-text" className="generated-text">
-                    {words.join(" ")}
+                <div className="text-container">
+                    <div id="generated-text" className="generated-text" style={{ transform: `translateX(-${textOffset}px)` }}>
+                        {renderText()}
+                    </div>
                 </div>
+
                 <input
                     id="typing-input"
-                    ref={inputRef}
                     className="typing-input"
-                    value={userInput}
+                    placeholder="Type here..."
+                    value={inputText}
                     onChange={handleInputChange}
                     disabled={!isRunning}
-                    placeholder="Start typing here..."
                 />
 
+                <div id="result" className="result"></div>
+
                 <div className="stats">
-                    <p>Errors: <span>{errors}</span></p>
-                    <p>Typed: <span>{totalTyped}</span></p>
-                    <p>Accuracy: <span>{totalTyped ? Math.round(((totalTyped - errors) / totalTyped) * 100) : 0}</span>%</p>
+                    <p>Ошибки: <span id="error-count">{errorCount}</span></p>
+                    <p>Введено символов: <span id="typed-count">{typedChars}</span></p>
+                    <p>Оставшееся время: <span id="time-left">{timeLeft}</span> сек</p>
+                    <p>Точность: <span id="accuracy">
+                        {generatedText.length > 0
+                            ? Math.max(0, 100 - Math.round((errorCount / generatedText.length) * 100))
+                            : 0}
+                        %
+                    </span></p>
                 </div>
             </div>
         </div>

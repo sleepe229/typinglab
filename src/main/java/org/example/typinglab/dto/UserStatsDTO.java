@@ -10,7 +10,8 @@ public class UserStatsDTO {
     private Integer completedTrainings;
     private Double maxTypingSpeed;
     private Integer totalCharactersTyped;
-    private Double missclickPercentage;
+    private Integer totalMissClick;
+    private Double missClickPercentage;
 
     @JsonCreator
     public UserStatsDTO(
@@ -20,14 +21,16 @@ public class UserStatsDTO {
             @JsonProperty("completedTrainings") Integer completedTrainings,
             @JsonProperty("maxTypingSpeed") Double maxTypingSpeed,
             @JsonProperty("totalCharactersTyped") Integer totalCharactersTyped,
-            @JsonProperty("missclickPercentage") Double missclickPercentage) {
+            @JsonProperty("totalMissClick") Integer totalMissClick,
+            @JsonProperty("missClickPercentage") Double missClickPercentage) {
         this.userId = userId;
         this.averageTrainingSpeed = averageTrainingSpeed;
         this.averageTypingSpeed = averageTypingSpeed;
         this.completedTrainings = completedTrainings;
         this.maxTypingSpeed = maxTypingSpeed;
         this.totalCharactersTyped = totalCharactersTyped;
-        this.missclickPercentage = missclickPercentage;
+        this.totalMissClick = totalMissClick;
+        this.missClickPercentage = missClickPercentage;
     }
 
     public int getUserId() { return userId; }
@@ -42,6 +45,12 @@ public class UserStatsDTO {
     public void setMaxTypingSpeed(Double maxTypingSpeed) { this.maxTypingSpeed = maxTypingSpeed; }
     public Integer getTotalCharactersTyped() { return totalCharactersTyped; }
     public void setTotalCharactersTyped(Integer totalCharactersTyped) { this.totalCharactersTyped = totalCharactersTyped; }
-    public Double getMissclickPercentage() { return missclickPercentage; }
-    public void setMissclickPercentage(Double missclickPercentage) { this.missclickPercentage = missclickPercentage; }
+    public Integer getTotalMissClick() { return totalMissClick; }
+    public void setTotalMissClick(Integer totalMissClick) { this.totalMissClick = totalMissClick; }
+    public Double getMissClickPercentage() {
+        return missClickPercentage;
+    }
+    public void setMissClickPercentage(Double missClickPercentage) {
+        this.missClickPercentage = missClickPercentage;
+    }
 }

@@ -65,7 +65,7 @@ public class UserController {
                 .orElseThrow(() -> new RuntimeException("User not found: " + userId));
 
         Optional<UserStats> statsOptional = userStatsService.findById(userId);
-        return statsOptional.map(this::toStatsDTO).orElseGet(() -> new UserStatsDTO(userId, 0.0, 0.0, 0, 0.0, 0, 0.0));
+        return statsOptional.map(this::toStatsDTO).orElseGet(() -> new UserStatsDTO(userId, 0.0, 0.0, 0, 0.0, 0, 0, 0.0));
     }
 
     @PostMapping("/stats/update")
@@ -109,7 +109,8 @@ public class UserController {
                 stats.getCompletedTrainings(),
                 stats.getMaxTypingSpeed(),
                 stats.getTotalCharactersTyped(),
-                stats.getMissclickPercentage()
+                stats.getTotalMissClick(),
+                (double) (stats.getTotalMissClick()/stats.getTotalCharactersTyped())
         );
     }
 }
