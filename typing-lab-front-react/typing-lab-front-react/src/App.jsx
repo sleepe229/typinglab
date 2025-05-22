@@ -5,6 +5,7 @@ import Landing from './pages/landing/Landing';
 import SignUp from './pages/signUp/SignUp';
 import TypingTest from "./pages/typingtest/TypingTest.jsx";
 import ProfileForm from './pages/profileForm/ProfileForm.jsx';
+// import StatsPage from './pages/stats/StatsPage.jsx';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/tipingtest' element={<TypingTest />} />
         <Route path='/profile' element={<ProfileForm />} />
-        <Route path='/statistics' element={<StatsPage />} />
+        {/* <Route path='/statistics' element={<StatsPage />} /> */}
       </Routes>
     </Router>
   )

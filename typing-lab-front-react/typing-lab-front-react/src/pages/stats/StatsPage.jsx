@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import '../StatsPage.css';
+import './stats.css';
+import axios from 'axios';
 
 function StatsPage() {
     const [stats, setStats] = useState({
@@ -14,16 +15,24 @@ function StatsPage() {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/stats');
-                // if (!response.ok) {
-                //     throw new Error('Failed to fetch stats');
-                // }
-                const data = await response.json();
+                const userId = localStorage.getItem("userId");
+                const response = await axios.post(`http://localhost:8080/api/typinglab/users/stats`, { userId })
                 setStats({
-                    ...data,
+                    ...response.data,
                     isLoading: false,
                     error: null
                 });
+            
+                // const response = await fetch('http://localhost:8080/api/typinglab/users/stats');
+                // if (!response.ok) {
+                //     throw new Error('Failed to fetch stats');
+                // }
+                // const data = await response.json();
+                // setStats({
+                //     ...data,
+                //     isLoading: false,
+                //     error: null
+                // });
             } catch (error) {
                 setStats(prev => ({
                     ...prev,

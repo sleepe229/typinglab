@@ -135,7 +135,7 @@ function TypingTest() {
                 <ul className="nav_links">
                     <li className="link"><a href="/">Home</a></li>
                     <li className="link"><a href="typing-test.html" className="active">Tests</a></li>
-                    <li className="link"><a href="profile.html">Stats</a></li>
+                    <li className="link"><a href="/statistics">Stats</a></li>
                 </ul>
                 <div className="buttonss">
                     <button id="btnsi" className="sign_in_btn" onClick={() => navigate("/profile")}>My Profile</button>
