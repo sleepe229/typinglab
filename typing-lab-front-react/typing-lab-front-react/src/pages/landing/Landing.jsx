@@ -9,7 +9,7 @@ function scrollToContainer(selector, instance = 0) {
 }
 
 export default function Landing() {
-  localStorage.setItem("userId", 2)
+  // localStorage.setItem("userId", 2)
   const handleRedirect = () => {
     window.location.href = "sign_up_page.html";
   };

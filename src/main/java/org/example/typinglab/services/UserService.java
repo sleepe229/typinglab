@@ -2,7 +2,9 @@ package org.example.typinglab.services;
 
 import jakarta.annotation.PostConstruct;
 import org.example.typinglab.entity.User;
+import org.example.typinglab.entity.UserStats;
 import org.example.typinglab.repo.UserRepository;
+import org.example.typinglab.repo.UserStatsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserStatsRepository userStatsRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -46,7 +51,8 @@ public class UserService {
         user.setEmail(null);
         user.setBirthdate(null);
         user.setCountry(null);
-        return userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        return savedUser;
     }
 
     @Transactional
