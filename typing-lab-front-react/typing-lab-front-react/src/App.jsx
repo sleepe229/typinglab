@@ -16,6 +16,7 @@ function App() {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/tipingtest' element={<TypingTest />} />
         <Route path='/profile' element={<ProfileForm />} />
+        <Route path='/statistics' element={<StatsPage />} />
       </Routes>
     </Router>
   )
