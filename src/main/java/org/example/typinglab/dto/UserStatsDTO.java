@@ -1,5 +1,8 @@
 package org.example.typinglab.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserStatsDTO {
     private int userId;
     private Double averageTrainingSpeed;
@@ -9,8 +12,15 @@ public class UserStatsDTO {
     private Integer totalCharactersTyped;
     private Double missclickPercentage;
 
-    public UserStatsDTO(int userId, Double averageTrainingSpeed, Double averageTypingSpeed, Integer completedTrainings,
-                        Double maxTypingSpeed, Integer totalCharactersTyped, Double missclickPercentage) {
+    @JsonCreator
+    public UserStatsDTO(
+            @JsonProperty("userId") Integer userId,
+            @JsonProperty("averageTrainingSpeed") Double averageTrainingSpeed,
+            @JsonProperty("averageTypingSpeed") Double averageTypingSpeed,
+            @JsonProperty("completedTrainings") Integer completedTrainings,
+            @JsonProperty("maxTypingSpeed") Double maxTypingSpeed,
+            @JsonProperty("totalCharactersTyped") Integer totalCharactersTyped,
+            @JsonProperty("missclickPercentage") Double missclickPercentage) {
         this.userId = userId;
         this.averageTrainingSpeed = averageTrainingSpeed;
         this.averageTypingSpeed = averageTypingSpeed;

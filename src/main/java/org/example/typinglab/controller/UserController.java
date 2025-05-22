@@ -14,6 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/typinglab/users")
@@ -37,6 +38,8 @@ public class UserController {
                 params.getLogin(),
                 params.getPassword()
         );
+
+//        userStatsService.updateUserStats(user.getId(), new UserStatsDTO(user.getId(), 0.0, 0.0, 0, 0.0, 0, 0.0));
         return toDTO(user);
     }
 
@@ -60,9 +63,9 @@ public class UserController {
         int userId = request.getUserId();
         User user = userService.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found: " + userId));
-        UserStats stats = userStatsService.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Statistics not found for user: " + userId));
-        return toStatsDTO(stats);
+
+        Optional<UserStats> statsOptional = userStatsService.findById(userId);
+        return statsOptional.map(this::toStatsDTO).orElseGet(() -> new UserStatsDTO(userId, 0.0, 0.0, 0, 0.0, 0, 0.0));
     }
 
     @PostMapping("/stats/update")
@@ -70,7 +73,7 @@ public class UserController {
         int userId = statsDTO.getUserId();
         User user = userService.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found: " + userId));
-        return userStatsService.updateUserStats(statsDTO.getUserId(), statsDTO);
+        return userStatsService.updateUserStats(user.getId(), statsDTO);
     }
 
     @GetMapping("/words")
