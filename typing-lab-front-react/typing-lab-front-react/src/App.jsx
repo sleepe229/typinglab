@@ -4,6 +4,7 @@ import SignIn from './pages/signIn/SignIn';
 import Landing from './pages/landing/Landing';
 import SignUp from './pages/signUp/SignUp';
 import TypingTest from "./pages/typingtest/TypingTest.jsx";
+import ProfileForm from './pages/profileForm/ProfileForm.jsx';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/tipingtest' element={<TypingTest />} />
+        <Route path='/profile' element={<ProfileForm />} />
       </Routes>
     </Router>
   )

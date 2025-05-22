@@ -9,6 +9,7 @@ function scrollToContainer(selector, instance = 0) {
 }
 
 export default function Landing() {
+  localStorage.setItem("userId", 2)
   const handleRedirect = () => {
     window.location.href = "sign_up_page.html";
   };
@@ -32,14 +33,28 @@ export default function Landing() {
               <a href="#AboutUs">About us</a>
             </li>
           </ul>
-          <div className="buttonss">
-            <Link to="/sign-in">
-              <button id="btnsi" className="sign_in_btn">Sign in</button>
-            </Link>
-            <Link to="/sign-up">
-              <button id="btnsu" className="sign_up_btn">Sign up</button>
-            </Link>
-          </div>
+          {localStorage.getItem("userId") && (
+            <div className="buttonss">
+              <Link to="/profile">
+                <button id="btnsi" className="profile_btn">Profile</button>
+              </Link>
+              <Link to="/tipingtest">
+                <button id="btnsu" className="start_btn">Start</button>
+              </Link>
+            </div>
+          )}
+
+          {!localStorage.getItem("userId") && (
+            <div className="buttonss">
+              <Link to="/sign-in">
+                <button id="btnsi" className="sign_in_btn">Sign in</button>
+              </Link>
+              <Link to="/sign-up">
+                <button id="btnsu" className="sign_up_btn">Sign up</button>
+              </Link>
+            </div>
+          )}
+          
         </nav>
 
         <header className="slogan">
