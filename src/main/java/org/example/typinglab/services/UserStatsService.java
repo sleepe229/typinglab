@@ -22,7 +22,7 @@ public class UserStatsService {
 
     @Transactional
     public Optional<UserStats> findById(int userId) {
-        return userStatsRepository.findByUserId(userId); // Use findByUserId to align with user_id column
+        return userStatsRepository.findByUserId(userId);
     }
 
     @Transactional
@@ -34,56 +34,45 @@ public class UserStatsService {
                 .orElseGet(() -> {
                     UserStats newStats = new UserStats();
                     newStats.setUser(user);
+                    newStats.setTotalCharactersTyped(0);
+                    newStats.setTotalMissClick(0);
+                    newStats.setCompletedTrainings(0);
+                    newStats.setAverageTypingSpeed(0.0);
+                    newStats.setMaxTypingSpeed(0.0);
                     return newStats;
                 });
 
-        int additionalTrainings = statsDTO.getCompletedTrainings() != null ? statsDTO.getCompletedTrainings() : 0;
-        int totalTrainings = stats.getCompletedTrainings() + additionalTrainings;
+        int totalTrainings = stats.getCompletedTrainings() + 1;
+        stats.setCompletedTrainings(totalTrainings);
 
-        if (additionalTrainings > 0) {
-            if (statsDTO.getAverageTrainingSpeed() != null) {
-                stats.setAverageTrainingSpeed(
-                        (stats.getAverageTrainingSpeed() * stats.getCompletedTrainings()
-                                + statsDTO.getAverageTrainingSpeed() * additionalTrainings)
-                                / totalTrainings);
-            }
+        int newCharactersTyped = statsDTO.getTotalCharactersTyped() != null ? statsDTO.getTotalCharactersTyped() : 0;
+        stats.setTotalCharactersTyped(stats.getTotalCharactersTyped() + newCharactersTyped);
 
-            if (statsDTO.getAverageTypingSpeed() != null) {
-                stats.setAverageTypingSpeed(
-                        (stats.getAverageTypingSpeed() * stats.getCompletedTrainings()
-                                + statsDTO.getAverageTypingSpeed() * additionalTrainings)
-                                / totalTrainings);
-            }
+        int newMissClicks = statsDTO.getTotalMissClick() != null ? statsDTO.getTotalMissClick() : 0;
+        stats.setTotalMissClick(stats.getTotalMissClick() + newMissClicks);
 
-            if (statsDTO.getMissclickPercentage() != null) {
-                stats.setMissclickPercentage(
-                        (stats.getMissclickPercentage() * stats.getCompletedTrainings()
-                                + statsDTO.getMissclickPercentage() * additionalTrainings)
-                                / totalTrainings);
-            }
-
-            stats.setCompletedTrainings(totalTrainings);
-        }
-
-        if (statsDTO.getMaxTypingSpeed() != null) {
-            stats.setMaxTypingSpeed(Math.max(stats.getMaxTypingSpeed(), statsDTO.getMaxTypingSpeed()));
-        }
-
-        if (statsDTO.getTotalCharactersTyped() != null) {
-            stats.setTotalCharactersTyped(
-                    stats.getTotalCharactersTyped() + statsDTO.getTotalCharactersTyped());
+        if (newCharactersTyped > 0) {
+            stats.setAverageTypingSpeed(
+                    ((stats.getAverageTypingSpeed() * (totalTrainings - 1)) + (double) newCharactersTyped) / totalTrainings
+            );
+            stats.setMaxTypingSpeed(Math.max(stats.getMaxTypingSpeed(), (double) newCharactersTyped));
         }
 
         UserStats saved = userStatsRepository.save(stats);
 
+        double missClickPercentage = saved.getTotalCharactersTyped() > 0
+                ? (double) saved.getTotalMissClick() / saved.getTotalCharactersTyped() * 100
+                : 0.0;
+
         return new UserStatsDTO(
                 saved.getUser().getId(),
-                saved.getAverageTrainingSpeed(),
+                0.0,
                 saved.getAverageTypingSpeed(),
                 saved.getCompletedTrainings(),
                 saved.getMaxTypingSpeed(),
                 saved.getTotalCharactersTyped(),
-                saved.getMissclickPercentage()
+                saved.getTotalMissClick(),
+                missClickPercentage
         );
     }
 }

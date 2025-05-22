@@ -26,8 +26,8 @@ private User user;
     @Column(name = "max_typing_speed")
     private double maxTypingSpeed;
 
-    @Column(name = "missclick_percentage")
-    private double missclickPercentage;
+    @Column(name = "total_miss_click")
+    private int totalMissClick;
 
     @Column(name = "total_characters_typed")
     private int totalCharactersTyped;
@@ -44,8 +44,8 @@ private User user;
     public void setCompletedTrainings(int completedTrainings) { this.completedTrainings = completedTrainings; }
     public double getMaxTypingSpeed() { return maxTypingSpeed; }
     public void setMaxTypingSpeed(double maxTypingSpeed) { this.maxTypingSpeed = maxTypingSpeed; }
-    public double getMissclickPercentage() { return missclickPercentage; }
-    public void setMissclickPercentage(double missclickPercentage) { this.missclickPercentage = missclickPercentage; }
+    public int getTotalMissClick() { return totalMissClick; }
+    public void setTotalMissClick(int totalMissClick) { this.totalMissClick = totalMissClick; }
     public int getTotalCharactersTyped() { return totalCharactersTyped; }
     public void setTotalCharactersTyped(int totalCharactersTyped) { this.totalCharactersTyped = totalCharactersTyped; }
 }

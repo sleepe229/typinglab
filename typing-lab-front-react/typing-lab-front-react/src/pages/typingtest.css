@@ -5,6 +5,7 @@
     background-color: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .typing-test-title {
@@ -66,6 +67,10 @@
     background-color: #f8f9fa;
     border-radius: 10px;
     min-height: 100px;
+    white-space: nowrap;
+    display: inline-block;
+    align-content: center;
+    transition: transform 0.2s ease;
 }
 
 .typing-input {
@@ -76,6 +81,7 @@
     border-radius: 8px;
     margin-top: 20px;
     transition: border-color 0.3s;
+    box-sizing: border-box;
 }
 
 .typing-input:focus {
