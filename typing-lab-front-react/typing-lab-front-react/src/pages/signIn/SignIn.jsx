@@ -17,8 +17,9 @@ export default function SignIn() {
         password,
       });
 
-      const user = response.data;
+      const user = response.data.login;
       console.log("Logged in:", user);
+      localStorage.setItem("userId", response.data.id);
 
       if (rememberMe) {
         localStorage.setItem("user", JSON.stringify(user));

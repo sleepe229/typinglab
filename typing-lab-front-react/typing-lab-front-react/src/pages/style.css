@@ -110,6 +110,38 @@ nav{
     color: #8a8a8a;
 }
 
+.start_btn{
+    padding: 1rem 1.3rem ;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 18px;
+    background-color: #edeeff;
+    cursor: pointer;
+    width: 95px;
+    transition: all ease 300ms;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.start_btn:hover {
+    transform: perspective(1px) scale3d(1.05, 1.05, 1) translateZ(0) !important;
+}
+
+.profile_btn{
+    padding: 1rem 1.3rem ;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 18px;
+    background-color: #EECBFF;
+    cursor: pointer;
+    width: 95px;
+    transition: all ease 300ms;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.profile_btn:hover {
+    transform: perspective(1px) scale3d(1.05, 1.05, 1) translateZ(0) !important;
+}
+
 .sign_in_btn{
     padding: 1rem 1.3rem ;
     font-weight: bold;
