@@ -24,7 +24,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/typinglab/users/login", "/api/typinglab/users/create", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .anyRequest().authenticated()
+//                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .logout(logout -> logout.logoutUrl("/api/typinglab/users/logout").invalidateHttpSession(true));
         return http.build();

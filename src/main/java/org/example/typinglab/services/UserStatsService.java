@@ -21,13 +21,13 @@ public class UserStatsService {
     private UserRepository userRepository;
 
     @Transactional
-    public Optional<UserStats> findById(String userId) {
+    public Optional<UserStats> findById(int userId) {
         return userStatsRepository.findById(userId);
     }
 
 
     @Transactional
-    public UserStatsDTO updateUserStats(String userId, UserStatsDTO statsDTO) {
+    public UserStatsDTO updateUserStats(int userId, UserStatsDTO statsDTO) {
         // Validate user exists
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found: " + userId));
@@ -56,17 +56,14 @@ public class UserStatsService {
         UserStats stats = userStatsRepository.findById(userId)
                 .orElse(new UserStats());
 
-        // Initialize fields if new
-        if (stats.getUserId() == null) {
-            stats.setUserId(userId);
-            stats.setUser(user);
-            stats.setAverageTrainingSpeed(0.0);
-            stats.setAverageTypingSpeed(0.0);
-            stats.setCompletedTrainings(0);
-            stats.setMaxTypingSpeed(0.0);
-            stats.setTotalCharactersTyped(0);
-            stats.setMissclickPercentage(0.0);
-        }
+        stats.setUser(user);
+        stats.setAverageTrainingSpeed(0.0);
+        stats.setAverageTypingSpeed(0.0);
+        stats.setCompletedTrainings(0);
+        stats.setMaxTypingSpeed(0.0);
+        stats.setTotalCharactersTyped(0);
+        stats.setMissclickPercentage(0.0);
+
 
         // Update fields with calculations
         if (statsDTO.getAverageTrainingSpeed() != null) {

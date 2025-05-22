@@ -36,6 +36,7 @@ public class TypinglabApplication {
 				.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
 				.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true)
 				.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+				.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
 				.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 				.registerModule(new JavaTimeModule())
 				.setDateFormat(new ISO8601DateFormat() {

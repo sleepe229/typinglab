@@ -8,7 +8,8 @@ public class UserStats {
 
     @Id
     @Column(name = "user_id")
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;
 
     @Column(name = "average_training_speed")
     private Double averageTrainingSpeed;
@@ -35,8 +36,8 @@ public class UserStats {
 
     public UserStats() {}
 
-    public String getUserId() { return userId; }
-    public void setUserId(String userId) { this.userId = userId; }
+    public int getUserId() { return userId; }
+    public void setUserId(int userId) { this.userId = userId; }
     public Double getAverageTrainingSpeed() { return averageTrainingSpeed; }
     public void setAverageTrainingSpeed(Double averageTrainingSpeed) { this.averageTrainingSpeed = averageTrainingSpeed; }
     public Double getAverageTypingSpeed() { return averageTypingSpeed; }

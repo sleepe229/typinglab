@@ -2,28 +2,34 @@ package org.example.typinglab.controller;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import org.example.typinglab.dto.LoginParams;
-import org.example.typinglab.dto.UserCreateParam;
-import org.example.typinglab.dto.UserDTO;
-import org.example.typinglab.dto.UserStatsDTO;
+import org.example.typinglab.dto.*;
 import org.example.typinglab.entity.User;
 import org.example.typinglab.entity.UserStats;
 import org.example.typinglab.repo.UserStatsRepository;
 import org.example.typinglab.services.UserService;
 import org.example.typinglab.services.UserStatsService;
+import org.example.typinglab.services.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/typinglab/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private UserStatsService userStatsService;
+    private final UserStatsService userStatsService;
+
+    private final WordService wordService;
+
+    public UserController(UserService userService, UserStatsService userStatsService, WordService wordService) {
+        this.userService = userService;
+        this.userStatsService = userStatsService;
+        this.wordService = wordService;
+    }
 
     @PostMapping("/create")
     public UserDTO createUser(@Valid @RequestBody UserCreateParam params) {
@@ -41,27 +47,35 @@ public class UserController {
         return toDTO(user);
     }
 
-    @GetMapping("/me")
-    public UserDTO getCurrentUser(@AuthenticationPrincipal User user) {
-        if (user == null) {
-            throw new RuntimeException("Not logged in");
-        }
+    @PostMapping("/me")
+    public UserDTO getCurrentUser(@RequestBody UserIdRequest request) {
+        int userId = request.getUserId();
+        User user = userService.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found: " + userId));
         return toDTO(user);
     }
 
-    @GetMapping("/stats")
-    public UserStatsDTO getUserStats(@RequestParam("user_id") String userId) {
+    @PostMapping("/stats")
+    public UserStatsDTO getUserStats(@RequestBody UserIdRequest request) {
+        int userId = request.getUserId();
+        User user = userService.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found: " + userId));
         UserStats stats = userStatsService.findById(userId)
                 .orElseThrow(() -> new RuntimeException("Statistics not found for user: " + userId));
         return toStatsDTO(stats);
     }
 
-    @PostMapping("/stats")
-    public UserStatsDTO updateUserStats(@Valid @RequestBody UserStatsDTO statsDTO, @AuthenticationPrincipal User currentUser) {
-        if (!currentUser.getId().equals(statsDTO.getUserId()) && !currentUser.isAdmin()) {
-            throw new RuntimeException("Access denied: Can only update own stats or admin");
-        }
+    @PostMapping("/stats/update")
+    public UserStatsDTO updateUserStats(@Valid @RequestBody UserStatsDTO statsDTO) {
+        int userId = statsDTO.getUserId();
+        User user = userService.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found: " + userId));
         return userStatsService.updateUserStats(statsDTO.getUserId(), statsDTO);
+    }
+
+    @GetMapping("/words")
+    public List<String> getRandomWords(@RequestParam("level") int level) {
+        return wordService.getRandomWords(level);
     }
 
     @PostMapping("/logout")
