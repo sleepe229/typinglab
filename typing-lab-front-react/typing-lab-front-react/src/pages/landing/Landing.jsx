@@ -13,7 +13,7 @@ export default function Landing() {
   const navigate = useNavigate();
   // localStorage.setItem("userId", 2)
   const handleRedirect = () => {
-    navigate(localStorage.getItem("userId") ? "/tipingtest" : "/sign-in");
+    navigate(localStorage.getItem("userId") ? "/tests" : "/sign-in");
   };
 
   return (
@@ -47,16 +47,16 @@ export default function Landing() {
           )}
 
           {!localStorage.getItem("userId") && (
-              <div className="buttonss">
-                <Link to="/sign-in">
-                  <button id="btnsi" className="sign_in_btn">Sign in</button>
-                </Link>
-                <Link to="/sign-up">
-                  <button id="btnsu" className="sign_up_btn">Sign up</button>
-                </Link>
-              </div>
+            <div className="buttonss">
+              <Link to="/sign-in">
+                <button id="btnsi" className="sign_in_btn">Sign in</button>
+              </Link>
+              <Link to="/sign-up">
+                <button id="btnsu" className="sign_up_btn">Sign up</button>
+              </Link>
+            </div>
           )}
-
+          
         </nav>
 
         <header className="slogan">

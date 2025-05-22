@@ -1,0 +1,163 @@
+.testsPage {
+  min-height: 100vh;
+  padding: 20px;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+.desktopNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo img {
+  height: 40px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks .link a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+  font-size: 1.1rem;
+}
+
+.navLinks .link a:hover {
+  color: #ff69b4;
+}
+
+.buttonss .signInBtn {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.buttonss .signInBtn:hover {
+  background-color: #ff1493;
+}
+
+.testsContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.testsTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.testsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.testCard {
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  flex: 1 1 220px;
+  max-width: 300px;
+}
+
+.testCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: #ffe6f0; /* Light pink on hover */
+}
+
+.testCard:hover h3 {
+  color: #ff69b4; /* Pink text on hover */
+}
+
+.testCard h3 {
+  color: #555;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.testDescription {
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.testCard.lastButton {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .desktopNav {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .navLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .testsContainer {
+    padding: 20px;
+  }
+
+  .testsTitle {
+    font-size: 2rem;
+  }
+
+  .testsGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testCard.lastButton {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .testCard {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .testCard.lastButton {
+    max-width: 100%;
+  }
+}
