@@ -107,9 +107,9 @@ function TypingTest() {
         return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     };
 
-    const handleRedirect = () => {
-        window.location.href = "lk.html";
-    };
+    // const handleRedirect = () => {
+    //     window.location.href = "lk.html";
+    // };
     const renderText = () => {
         return generatedText.split("").map((char, index) => {
             let style = {};
@@ -176,7 +176,7 @@ function TypingTest() {
                     <p>Оставшееся время: <span id="time-left">{timeLeft}</span> сек</p>
                     <p>Точность: <span id="accuracy">
                         {generatedText.length > 0
-                            ? Math.max(0, 100 - Math.round((errorCount / generatedText.length) * 100))
+                            ? Math.max(0, 100 - Math.round((errorCount / typedChars) * 100))
                             : 0}
                         %
                     </span></p>

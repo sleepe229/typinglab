@@ -37,6 +37,10 @@ export default function ProfileForm() {
     }
   };
 
+    const handleRedirect = () => {
+        localStorage.removeItem("userId");
+        navigate("/");
+    };
   return (
         <div className="container">
         <aside className="sidebar">
@@ -77,7 +81,9 @@ export default function ProfileForm() {
             <section className="section-items">
                 <div className="settings">
                     <div className="menu-item">Settings</div>
-                    <div className="menu-item">Log out</div>
+
+                    <div className="menu-item" onClick={() => handleRedirect()}>Log out</div>
+
                 </div>
             </section>
         </aside>

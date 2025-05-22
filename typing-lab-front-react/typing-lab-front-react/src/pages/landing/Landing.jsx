@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../style.css";
+import { useNavigate } from "react-router-dom";
 
 function scrollToContainer(selector, instance = 0) {
   const elements = document.querySelectorAll(selector);
@@ -9,9 +10,10 @@ function scrollToContainer(selector, instance = 0) {
 }
 
 export default function Landing() {
+  const navigate = useNavigate();
   // localStorage.setItem("userId", 2)
   const handleRedirect = () => {
-    window.location.href = "sign_up_page.html";
+    navigate(localStorage.getItem("userId") ? "/tipingtest" : "/sign-in");
   };
 
   return (
@@ -34,27 +36,27 @@ export default function Landing() {
             </li>
           </ul>
           {localStorage.getItem("userId") && (
-            <div className="buttonss">
-              <Link to="/profile">
-                <button id="btnsi" className="profile_btn">Profile</button>
-              </Link>
-              <Link to="/tipingtest">
-                <button id="btnsu" className="start_btn">Start</button>
-              </Link>
-            </div>
+              <div className="buttonss">
+                <Link to="/profile">
+                  <button id="btnsi" className="profile_btn">Profile</button>
+                </Link>
+                <Link to="/tipingtest">
+                  <button id="btnsu" className="start_btn">Start</button>
+                </Link>
+              </div>
           )}
 
           {!localStorage.getItem("userId") && (
-            <div className="buttonss">
-              <Link to="/sign-in">
-                <button id="btnsi" className="sign_in_btn">Sign in</button>
-              </Link>
-              <Link to="/sign-up">
-                <button id="btnsu" className="sign_up_btn">Sign up</button>
-              </Link>
-            </div>
+              <div className="buttonss">
+                <Link to="/sign-in">
+                  <button id="btnsi" className="sign_in_btn">Sign in</button>
+                </Link>
+                <Link to="/sign-up">
+                  <button id="btnsu" className="sign_up_btn">Sign up</button>
+                </Link>
+              </div>
           )}
-          
+
         </nav>
 
         <header className="slogan">
